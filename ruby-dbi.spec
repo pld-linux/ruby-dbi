@@ -15,7 +15,7 @@ Patch0:		%{name}-prefix.patch
 Patch1:		%{name}-timestamps.patch
 URL:		http://www.tmtm.org/mysql/ruby/
 BuildRequires:	ruby
-BuildRequires:	ruby-Mysql
+BuildRequires:	ruby-mysql
 BuildRequires:	ruby-Postgres
 BuildRequires:	ruby-devel
 BuildRequires:	sqlite-devel
@@ -34,7 +34,7 @@ Summary:	MySQL DataBase Driver for Ruby
 Summary(pl):	Sterownik bazy danych MySQL dla jêzyka Ruby
 Group:		Development/Languages
 Requires:	%{name} = %{version}-%{release}
-Requires:	ruby-Mysql
+Requires:	ruby-mysql-library
 
 %description -n ruby-DBD-Mysql
 MySQL DataBase Driver for Ruby.
