@@ -1,0 +1,50 @@
+diff -ur ruby-dbi-all-orig/setup.rb ruby-dbi-all/setup.rb
+--- ruby-dbi-all-orig/setup.rb	2002-10-02 11:53:40.000000000 -0600
++++ ruby-dbi-all/setup.rb	2004-02-22 17:08:18.523877588 -0700
+@@ -357,6 +357,9 @@
+     'bin-dir'   => [ bindir,
+                      'path',
+                      'directory to install commands' ],
++    'prefix'   => [ '',
++                     'path',
++                     'directory to prefix install' ],
+     'rb-dir'    => [ siterb,
+                      'path',
+                      'directory to install ruby scripts' ],
+@@ -384,7 +387,7 @@
+                      'package name(s) you do not want to install' ]
+   }
+ 
+-  CONFIG_ORDER = %w( bin-dir rb-dir so-dir ruby-path make-prog with without )
++  CONFIG_ORDER = %w( bin-dir rb-dir so-dir ruby-path make-prog with without prefix )
+ 
+   def save_configs
+     File.open( ConfigFile, 'w' ) do |f|
+@@ -557,7 +560,7 @@
+       next if /\A\./ === fname
+       next unless File.file? fname
+ 
+-      install fname, dir, mode
++      install fname, File.join(@config['prefix'], dir), mode
+     end
+   end
+ 
+@@ -585,7 +588,7 @@
+   def install_so( dir )
+     to = isdir(File.expand_path @config['so-dir'] + '/' + dir)
+     find_so('.').each do |fn|
+-      install fn, to, 0555
++      install fn, File.join(@config['prefix'], to), 0555
+     end
+   end
+ 
+@@ -642,7 +645,7 @@
+       dirs[0] = disk + dirs[0]
+     end
+     dirs.each_index do |idx|
+-      path = dirs[0..idx].join('')
++      path = File.join(@config['prefix'], dirs[0..idx].join(''))
+       Dir.mkdir path unless dir? path
+     end
+   end
+Only in ruby-dbi-all: setup.rb~
