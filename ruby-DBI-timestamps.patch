@@ -1,0 +1,29 @@
+diff -ur ruby-dbi-all-orig/lib/dbi/sql.rb ruby-dbi-all/lib/dbi/sql.rb
+--- ruby-dbi-all-orig/lib/dbi/sql.rb	2003-06-10 15:40:16.000000000 -0600
++++ ruby-dbi-all/lib/dbi/sql.rb	2004-02-22 17:17:01.195657072 -0700
+@@ -56,13 +56,17 @@
+       def as_timestamp(str)
+         return nil if str.nil? or str.empty?
+         ary = ParseDate.parsedate(str)
+-        time = ::Time.gm(*(ary[0,6]))
+-        if ary[6] =~ /^(\+|\-)\d+$/
+-          diff = ary[6].to_i * 60 * 60
+-          time -= diff
+-          time.localtime
+-        end 
+-        DBI::Timestamp.new(time)
++		  begin
++			  time = ::Time.gm(*(ary[0,6]))
++			  if ary[6] =~ /^(\+|\-)\d+$/
++				 diff = ary[6].to_i * 60 * 60
++				 time -= diff
++				 time.localtime
++			  end 
++			  DBI::Timestamp.new(time)
++		  rescue ArgumentError
++			  nil
++		  end
+       end
+ 
+ 
+Only in ruby-dbi-all/lib/dbi: sql.rb~
