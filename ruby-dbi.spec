@@ -16,9 +16,9 @@ Patch1:		%{name}-timestamps.patch
 URL:		http://www.tmtm.org/mysql/ruby/
 BuildRequires:	ruby
 BuildRequires:	ruby-devel
-BuildRequires:	ruby-mysql
+BuildRequires:	ruby-Mysql
 BuildRequires:	sqlite-devel
-BuildRequires:	ruby-postgres
+BuildRequires:	ruby-Postgres
 Obsoletes:	ruby-dbi
 Requires:	ruby
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -31,23 +31,23 @@ Modu³ DBI dla Ruby.
 
 %package -n ruby-DBD-Mysql
 Summary:	MySQL DataBase Driver for Ruby
-Requires:	ruby-mysql
-Group:	Development/Languages
+Requires:	ruby-Mysql
+Group:		Development/Languages
 
 %description -n ruby-DBD-Mysql
 MySQL DataBase Driver for Ruby
 
 %package -n ruby-DBD-SQLite
 Summary:	SQLite DataBase Driver for Ruby
-Group:	Development/Languages
+Group:		Development/Languages
 
 %description -n ruby-DBD-SQLite
 SQLite DataBase Driver for Ruby
 
 %package -n ruby-DBD-Pg
 Summary:	PostgreSQL DataBase Driver for Ruby
-Group:	Development/Languages
-Requires:	ruby-postgres
+Group:		Development/Languages
+Requires:	ruby-Postgres
 
 %description -n ruby-DBD-Pg
 PostgreSQL DataBase Driver for Ruby
@@ -98,10 +98,13 @@ rm -rf $RPM_BUILD_ROOT
 
 
 %files -n ruby-DBD-Mysql
+%defattr(644,root,root,755)
 %{ruby_rubylibdir}/DBD/Mysql
 
 %files -n ruby-DBD-SQLite
+%defattr(644,root,root,755)
 %{ruby_archdir}/DBD/SQLite
 
 %files -n ruby-DBD-Pg
+%defattr(644,root,root,755)
 %{ruby_rubylibdir}/DBD/Pg/Pg.rb
