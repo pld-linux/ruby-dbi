@@ -6,51 +6,66 @@ Summary(pl):	Interfejs do baz danych dla jêzyka Ruby
 Name:		ruby-DBI
 %define tarname ruby-dbi
 Version:	0.0.21
-Release:	2
+Release:	3
 License:	GPL
 Group:		Development/Languages
-Source0:	http://dl.sourceforge.net/%{tarname}/%{tarname}-all-%{version}.tar.gz
+Source0:	http://dl.sourceforge.net/ruby-dbi/%{tarname}-all-%{version}.tar.gz
 # Source0-md5:	e71784353b914ecdd02c9bdc5a21e65e
 Patch0:		%{name}-prefix.patch
 Patch1:		%{name}-timestamps.patch
 URL:		http://www.tmtm.org/mysql/ruby/
 BuildRequires:	ruby
-BuildRequires:	ruby-devel
 BuildRequires:	ruby-Mysql
-BuildRequires:	sqlite-devel
 BuildRequires:	ruby-Postgres
+BuildRequires:	ruby-devel
+BuildRequires:	sqlite-devel
 Obsoletes:	ruby-dbi
 Requires:	ruby
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
-DBI Module for Ruby
+DBI Module for Ruby.
 
 %description -l pl
 Modu³ DBI dla Ruby.
 
 %package -n ruby-DBD-Mysql
 Summary:	MySQL DataBase Driver for Ruby
-Requires:	ruby-Mysql
+Summary(pl):	Sterownik bazy danych MySQL dla jêzyka Ruby
 Group:		Development/Languages
+Requires:	%{name} = %{version}-%{release}
+Requires:	ruby-Mysql
 
 %description -n ruby-DBD-Mysql
-MySQL DataBase Driver for Ruby
+MySQL DataBase Driver for Ruby.
 
-%package -n ruby-DBD-SQLite
-Summary:	SQLite DataBase Driver for Ruby
-Group:		Development/Languages
-
-%description -n ruby-DBD-SQLite
-SQLite DataBase Driver for Ruby
+%description -n ruby-DBD-Mysql -l pl
+Sterownik bazy danych MySQL dla jêzyka Ruby.
 
 %package -n ruby-DBD-Pg
 Summary:	PostgreSQL DataBase Driver for Ruby
+Summary(pl):	Sterownik bazy danych PostgreSQL dla jêzyka Ruby
 Group:		Development/Languages
+Requires:	%{name} = %{version}-%{release}
 Requires:	ruby-Postgres
 
 %description -n ruby-DBD-Pg
-PostgreSQL DataBase Driver for Ruby
+PostgreSQL DataBase Driver for Ruby.
+
+%description -n ruby-DBD-Pg -l pl
+Sterownik bazy danych PostgreSQL dla jêzyka Ruby.
+
+%package -n ruby-DBD-SQLite
+Summary:	SQLite DataBase Driver for Ruby
+Summary(pl):	Sterownik bazy danych SQLite dla jêzyka Ruby
+Group:		Development/Languages
+Requires:	%{name} = %{version}-%{release}
+
+%description -n ruby-DBD-SQLite
+SQLite DataBase Driver for Ruby.
+
+%description -n ruby-DBD-SQLite -l pl
+Sterownik bazy danych SQLite dla jêzyka Ruby.
 
 %prep
 %setup -q -n %{tarname}-all
@@ -60,8 +75,9 @@ PostgreSQL DataBase Driver for Ruby
 %build
 find lib -type d -name 'test*' | xargs rm -r -v
 
+# dbd_sybase requires TDS API update
 ruby setup.rb config \
-	--with=dbi,dbd_proxy,dbd_mysql,dbd_sqlite,dbd_sqlrelay,dbd_pg \
+	--with=dbi,dbd_mysql,dbd_proxy,dbd_pg,dbd_sqlite,dbd_sqlrelay \
 	--prefix=$RPM_BUILD_ROOT \
 	--rb-dir=%{ruby_rubylibdir} \
 	--so-dir=%{ruby_archdir}
@@ -96,15 +112,15 @@ rm -rf $RPM_BUILD_ROOT
 %{ruby_ridir}/ColumnInfo
 #%{ruby_ridir}/OCIError/cdesc-OCIError.yaml
 
-
 %files -n ruby-DBD-Mysql
 %defattr(644,root,root,755)
 %{ruby_rubylibdir}/DBD/Mysql
 
-%files -n ruby-DBD-SQLite
-%defattr(644,root,root,755)
-%{ruby_archdir}/DBD/SQLite
-
 %files -n ruby-DBD-Pg
 %defattr(644,root,root,755)
 %{ruby_rubylibdir}/DBD/Pg/Pg.rb
+
+%files -n ruby-DBD-SQLite
+%defattr(644,root,root,755)
+%dir %{ruby_archdir}/DBD/SQLite
+%attr(755,root,root) %{ruby_archdir}/DBD/SQLite/SQLite.so
