@@ -1,0 +1,13 @@
+diff -ur o-ruby-dbi-all/lib/dbi/dbi.rb ruby-dbi-all/lib/dbi/dbi.rb
+--- o-ruby-dbi-all/lib/dbi/dbi.rb	2003-05-11 09:27:09.000000000 -0600
++++ ruby-dbi-all/lib/dbi/dbi.rb	2005-03-10 23:12:30.628388223 -0700
+@@ -297,7 +297,8 @@
+ 
+ class Timestamp
+   attr_accessor :year, :month, :day
+-  attr_accessor :hour, :minute, :second, :fraction
++  attr_accessor :hour, :minute, :second
++  attr_writer :fraction
+   
+   def initialize(year=0, month=0, day=0, hour=0, minute=0, second=0, fraction=nil)
+     case year
