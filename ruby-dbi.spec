@@ -6,7 +6,7 @@ Summary(pl):	Interfejs do baz danych dla jêzyka Ruby
 Name:		ruby-DBI
 %define tarname ruby-dbi
 Version:	0.0.21
-Release:	4
+Release:	5
 License:	GPL
 Group:		Development/Languages
 Source0:	http://dl.sourceforge.net/ruby-dbi/%{tarname}-all-%{version}.tar.gz
