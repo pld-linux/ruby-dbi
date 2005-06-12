@@ -13,7 +13,7 @@ Source0:	http://dl.sourceforge.net/ruby-dbi/%{tarname}-all-%{version}.tar.gz
 # Source0-md5:	e71784353b914ecdd02c9bdc5a21e65e
 Patch0:		%{name}-prefix.patch
 Patch1:		%{name}-timestamps.patch
-URL:		http://www.tmtm.org/mysql/ruby/
+Patch2:		%{name}-warning.patch
 BuildRequires:	ruby
 BuildRequires:	ruby-mysql
 BuildRequires:	ruby-Postgres
@@ -71,6 +71,7 @@ Sterownik bazy danych SQLite dla jêzyka Ruby.
 %setup -q -n %{tarname}-all
 %patch0 -p1
 %patch1 -p1
+%patch2 -p1
 
 %build
 find lib -type d -name 'test*' | xargs rm -r -v
@@ -118,7 +119,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n ruby-DBD-Pg
 %defattr(644,root,root,755)
-%{ruby_rubylibdir}/DBD/Pg/Pg.rb
+%{ruby_rubylibdir}/DBD/Pg
 
 %files -n ruby-DBD-SQLite
 %defattr(644,root,root,755)
