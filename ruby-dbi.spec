@@ -1,10 +1,7 @@
-%define	ruby_archdir	%(ruby -r rbconfig -e 'print Config::CONFIG["archdir"]')
-%define ruby_rubylibdir %(ruby -r rbconfig -e 'print Config::CONFIG["rubylibdir"]')
-%define	ruby_ridir	%(ruby -r rbconfig -e 'include Config; print File.join(CONFIG["datadir"], "ri", CONFIG["ruby_version"], "system")')
+%define tarname ruby-dbi
 Summary:	DataBase Interface for Ruby
 Summary(pl):	Interfejs do baz danych dla jêzyka Ruby
 Name:		ruby-DBI
-%define tarname ruby-dbi
 Version:	0.0.21
 Release:	5
 License:	GPL
@@ -14,10 +11,11 @@ Source0:	http://dl.sourceforge.net/ruby-dbi/%{tarname}-all-%{version}.tar.gz
 Patch0:		%{name}-prefix.patch
 Patch1:		%{name}-timestamps.patch
 Patch2:		%{name}-warning.patch
+BuildRequires:	rpmbuild(macros) >= 1.263
 BuildRequires:	ruby
-BuildRequires:	ruby-mysql
 BuildRequires:	ruby-Postgres
 BuildRequires:	ruby-devel
+BuildRequires:	ruby-mysql
 BuildRequires:	sqlite-devel
 Obsoletes:	ruby-dbi
 Requires:	ruby
@@ -73,9 +71,9 @@ Sterownik bazy danych SQLite dla jêzyka Ruby.
 %patch1 -p1
 %patch2 -p1
 
-%build
 find lib -type d -name 'test*' | xargs rm -r -v
 
+%build
 # dbd_sybase requires TDS API update
 ruby setup.rb config \
 	--with=dbi,dbd_mysql,dbd_proxy,dbd_pg,dbd_sqlite,dbd_sqlrelay \
