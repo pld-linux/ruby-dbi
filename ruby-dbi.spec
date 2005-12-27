@@ -12,9 +12,8 @@ Patch0:		%{name}-prefix.patch
 Patch1:		%{name}-timestamps.patch
 Patch2:		%{name}-warning.patch
 BuildRequires:	rpmbuild(macros) >= 1.263
-BuildRequires:	ruby-modules
-BuildRequires:	ruby-Postgres
 BuildRequires:	ruby-devel
+BuildRequires:	ruby-Postgres
 BuildRequires:	ruby-mysql
 BuildRequires:	sqlite-devel
 Obsoletes:	ruby-dbi
