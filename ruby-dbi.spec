@@ -11,13 +11,13 @@ Source0:	http://dl.sourceforge.net/ruby-dbi/%{tarname}-all-%{version}.tar.gz
 Patch0:		%{name}-prefix.patch
 Patch1:		%{name}-timestamps.patch
 Patch2:		%{name}-warning.patch
-BuildRequires:	rpmbuild(macros) >= 1.263
+BuildRequires:	rpmbuild(macros) >= 1.277
 BuildRequires:	ruby-devel
 BuildRequires:	ruby-Postgres
 BuildRequires:	ruby-mysql
 BuildRequires:	sqlite-devel
 Obsoletes:	ruby-dbi
-Requires:	ruby-modules
+%ruby_mod_ver_requires_eq
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
