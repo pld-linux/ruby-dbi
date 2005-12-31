@@ -17,7 +17,7 @@ BuildRequires:	ruby-Postgres
 BuildRequires:	ruby-mysql
 BuildRequires:	sqlite-devel
 Obsoletes:	ruby-dbi
-%ruby_mod_ver_requires_eq
+%{?ruby_mod_ver_requires_eq}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
