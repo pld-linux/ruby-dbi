@@ -3,7 +3,7 @@ Summary:	DataBase Interface for Ruby
 Summary(pl):	Interfejs do baz danych dla jêzyka Ruby
 Name:		ruby-DBI
 Version:	0.0.21
-Release:	6
+Release:	7
 License:	GPL
 Group:		Development/Languages
 Source0:	http://dl.sourceforge.net/ruby-dbi/%{tarname}-all-%{version}.tar.gz
@@ -12,7 +12,7 @@ Patch0:		%{name}-prefix.patch
 Patch1:		%{name}-timestamps.patch
 Patch2:		%{name}-warning.patch
 BuildRequires:	rpmbuild(macros) >= 1.277
-BuildRequires:	ruby-devel
+BuildRequires:	ruby-devel >= 1:1.8.4-5
 BuildRequires:	ruby-Postgres
 BuildRequires:	ruby-mysql
 BuildRequires:	sqlite-devel
