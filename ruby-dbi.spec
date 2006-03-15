@@ -1,13 +1,18 @@
-%define tarname ruby-dbi
+#
+# Conditional build:
+%bcond_without	rdoc		# build with rdoc
+%bcond_with	ri		# build with ri
+#
+%define tarname dbi
 Summary:	Database Interface for Ruby
 Summary(pl):	Interfejs do baz danych dla jêzyka Ruby
 Name:		ruby-DBI
-Version:	0.0.23
+Version:	0.1.0
 Release:	1
 License:	GPL
 Group:		Development/Languages
-Source0:	http://rubyforge.org/frs/download.php/655/%{tarname}-all-%{version}.tar.gz
-# Source0-md5:	7a713494d84bd4f5b877496970bcf13c
+Source0:	http://rubyforge.org/frs/download.php/8655/%{tarname}-%{version}.tar.gz
+# Source0-md5:	3622f0f0f7eb10ff863ee020083176a2
 Patch0:		%{name}-prefix.patch
 BuildRequires:	mysql-ruby
 BuildRequires:	rpmbuild(macros) >= 1.277
@@ -77,10 +82,10 @@ SQLite Database Driver for Ruby.
 Sterownik bazy danych SQLite dla jêzyka Ruby.
 
 %prep
-%setup -q -n %{tarname}-all
+%setup -q -n %{tarname}-%{version}
 %patch0 -p1
 
-find lib -type d -name 'test*' | xargs rm -r -v
+#find lib -type d -name 'test*' | xargs rm -r -v
 
 %build
 # dbd_sybase requires TDS API update
@@ -92,22 +97,32 @@ ruby setup.rb config \
 
 ruby setup.rb setup
 
+%if %{with rdoc}
 rdoc -o rdoc lib ext
-rdoc --ri --op ri lib lib/dbd_*/*
+%endif
+%if %{with ri}
+rdoc --ri --op ri lib ext
+%endif
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{ruby_archdir},%{ruby_ridir}}
+install -d $RPM_BUILD_ROOT{%{ruby_archdir},%{ruby_ridir},%{_examplesdir}/%{name}-%{version}}
 ruby setup.rb install
 
+%if %{with ri}
 cp -a ri/ri/* $RPM_BUILD_ROOT%{ruby_ridir}
+%endif
+cp -a examples/* $RPM_BUILD_ROOT%{_examplesdir}/%{name}-%{version}
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README* rdoc
+%doc README* 
+%if %{with rdoc}
+%doc rdoc
+%endif
 %attr(755,root,root) %{_bindir}/proxyserver.rb
 %attr(755,root,root) %{_bindir}/sqlsh.rb
 %dir %{ruby_rubylibdir}/DBD
@@ -116,9 +131,12 @@ rm -rf $RPM_BUILD_ROOT
 %{ruby_rubylibdir}/DBD/SQLRelay
 %{ruby_rubylibdir}/dbi.rb
 %{ruby_rubylibdir}/dbi
+%if %{with ri}
 %{ruby_ridir}/DBI
 %{ruby_ridir}/ColumnInfo
 #%{ruby_ridir}/OCIError/cdesc-OCIError.yaml
+%endif
+%{_examplesdir}/%{name}-%{version}
 
 %files -n ruby-DBD-Mysql
 %defattr(644,root,root,755)
