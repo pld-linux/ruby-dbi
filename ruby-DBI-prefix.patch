@@ -1,7 +1,24 @@
-diff -ur ruby-dbi-all-orig/setup.rb ruby-dbi-all/setup.rb
---- ruby-dbi-all-orig/setup.rb	2002-10-02 11:53:40.000000000 -0600
-+++ ruby-dbi-all/setup.rb	2004-02-22 17:08:18.523877588 -0700
-@@ -357,6 +357,9 @@
+diff -ur dbi-0.1.0-o/setup.rb dbi-0.1.0/setup.rb
+--- dbi-0.1.0-o/setup.rb	2006-02-13 06:35:18.000000000 -0700
++++ dbi-0.1.0/setup.rb	2006-03-14 17:57:57.000000000 -0700
+@@ -269,14 +269,14 @@
+ 						isdir( File.join( @config['rb-dir'], 'DBD', capname ) )
+ 						install(
+ 							basefile,
+-							File.join( @config['rb-dir'], 'DBD', capname, basefile ),
++							File.join( @config['prefix'], @config['rb-dir'], 'DBD', capname, basefile ),
+ 							0644
+ 						)
+ 					end
+ 				end
+ 			}
+ 			into_dir( 'dbi' ) { install_rb 'dbi' }
+-			install( 'dbi.rb', @config['rb-dir'], 0644 )
++			install( 'dbi.rb', File.join(@config['prefix'], @config['rb-dir']), 0644 )
+     }
+     into_dir( 'ext' ) {
+       foreach_package do |targ, *dummy|
+@@ -372,6 +372,9 @@
      'bin-dir'   => [ bindir,
                       'path',
                       'directory to install commands' ],
@@ -11,7 +28,7 @@ diff -ur ruby-dbi-all-orig/setup.rb ruby-dbi-all/setup.rb
      'rb-dir'    => [ siterb,
                       'path',
                       'directory to install ruby scripts' ],
-@@ -384,7 +387,7 @@
+@@ -399,7 +402,7 @@
                       'package name(s) you do not want to install' ]
    }
  
@@ -20,7 +37,7 @@ diff -ur ruby-dbi-all-orig/setup.rb ruby-dbi-all/setup.rb
  
    def save_configs
      File.open( ConfigFile, 'w' ) do |f|
-@@ -557,7 +560,7 @@
+@@ -573,7 +576,7 @@
        next if /\A\./ === fname
        next unless File.file? fname
  
@@ -29,16 +46,16 @@ diff -ur ruby-dbi-all-orig/setup.rb ruby-dbi-all/setup.rb
      end
    end
  
-@@ -585,7 +588,7 @@
+@@ -601,7 +604,7 @@
    def install_so( dir )
-     to = isdir(File.expand_path @config['so-dir'] + '/' + dir)
+     to = isdir(File.expand_path(@config['so-dir'] + '/' + dir))
      find_so('.').each do |fn|
 -      install fn, to, 0555
 +      install fn, File.join(@config['prefix'], to), 0555
      end
    end
  
-@@ -642,7 +645,7 @@
+@@ -658,7 +661,7 @@
        dirs[0] = disk + dirs[0]
      end
      dirs.each_index do |idx|
@@ -47,4 +64,4 @@ diff -ur ruby-dbi-all-orig/setup.rb ruby-dbi-all/setup.rb
        Dir.mkdir path unless dir? path
      end
    end
-Only in ruby-dbi-all: setup.rb~
+Only in dbi-0.1.0: setup.rb.orig
