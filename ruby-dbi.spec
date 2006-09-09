@@ -7,12 +7,12 @@
 Summary:	Database Interface for Ruby
 Summary(pl):	Interfejs do baz danych dla jêzyka Ruby
 Name:		ruby-DBI
-Version:	0.1.0
+Version:	0.1.1
 Release:	1
 License:	GPL
 Group:		Development/Languages
-Source0:	http://rubyforge.org/frs/download.php/8655/%{tarname}-%{version}.tar.gz
-# Source0-md5:	3622f0f0f7eb10ff863ee020083176a2
+Source0:	http://rubyforge.org/frs/download.php/12368/%{tarname}-%{version}.tar.gz
+# Source0-md5:	1077f898080bb0af1098ee4b5b54f8d1
 Patch0:		%{name}-prefix.patch
 BuildRequires:	mysql-ruby
 BuildRequires:	rpmbuild(macros) >= 1.277
@@ -82,7 +82,7 @@ SQLite Database Driver for Ruby.
 Sterownik bazy danych SQLite dla jêzyka Ruby.
 
 %prep
-%setup -q -n %{tarname}-%{version}
+%setup -q -n ruby-dbi
 %patch0 -p1
 
 #find lib -type d -name 'test*' | xargs rm -r -v
