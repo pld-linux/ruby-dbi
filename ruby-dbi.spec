@@ -5,7 +5,7 @@
 #
 %define tarname dbi
 Summary:	Database Interface for Ruby
-Summary(pl.UTF-8):   Interfejs do baz danych dla języka Ruby
+Summary(pl.UTF-8):	Interfejs do baz danych dla języka Ruby
 Name:		ruby-DBI
 Version:	0.1.1
 Release:	1
@@ -32,7 +32,7 @@ Moduł DBI dla Ruby.
 
 %package -n ruby-DBD-Mysql
 Summary:	MySQL Database Driver for Ruby
-Summary(pl.UTF-8):   Sterownik bazy danych MySQL dla języka Ruby
+Summary(pl.UTF-8):	Sterownik bazy danych MySQL dla języka Ruby
 Group:		Development/Languages
 Requires:	%{name} = %{version}-%{release}
 Requires:	ruby-mysql-library
@@ -45,7 +45,7 @@ Sterownik bazy danych MySQL dla języka Ruby.
 
 %package -n ruby-DBD-ODBC
 Summary:	ODBC Database Driver for Ruby
-Summary(pl.UTF-8):   Sterownik bazy danych ODBC dla języka Ruby
+Summary(pl.UTF-8):	Sterownik bazy danych ODBC dla języka Ruby
 Group:		Development/Languages
 Requires:	%{name} = %{version}-%{release}
 Requires:	ruby-odbc
@@ -58,7 +58,7 @@ Sterownik bazy danych ODBC dla języka Ruby.
 
 %package -n ruby-DBD-Pg
 Summary:	PostgreSQL Database Driver for Ruby
-Summary(pl.UTF-8):   Sterownik bazy danych PostgreSQL dla języka Ruby
+Summary(pl.UTF-8):	Sterownik bazy danych PostgreSQL dla języka Ruby
 Group:		Development/Languages
 Requires:	%{name} = %{version}-%{release}
 Requires:	ruby-Postgres
@@ -71,7 +71,7 @@ Sterownik bazy danych PostgreSQL dla języka Ruby.
 
 %package -n ruby-DBD-SQLite
 Summary:	SQLite Database Driver for Ruby
-Summary(pl.UTF-8):   Sterownik bazy danych SQLite dla języka Ruby
+Summary(pl.UTF-8):	Sterownik bazy danych SQLite dla języka Ruby
 Group:		Development/Languages
 Requires:	%{name} = %{version}-%{release}
 
