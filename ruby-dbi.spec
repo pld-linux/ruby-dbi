@@ -5,7 +5,7 @@
 #
 %define tarname dbi
 Summary:	Database Interface for Ruby
-Summary(pl):	Interfejs do baz danych dla jêzyka Ruby
+Summary(pl.UTF-8):   Interfejs do baz danych dla jÄ™zyka Ruby
 Name:		ruby-DBI
 Version:	0.1.1
 Release:	1
@@ -27,12 +27,12 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 %description
 DBI Module for Ruby.
 
-%description -l pl
-Modu³ DBI dla Ruby.
+%description -l pl.UTF-8
+ModuÅ‚ DBI dla Ruby.
 
 %package -n ruby-DBD-Mysql
 Summary:	MySQL Database Driver for Ruby
-Summary(pl):	Sterownik bazy danych MySQL dla jêzyka Ruby
+Summary(pl.UTF-8):   Sterownik bazy danych MySQL dla jÄ™zyka Ruby
 Group:		Development/Languages
 Requires:	%{name} = %{version}-%{release}
 Requires:	ruby-mysql-library
@@ -40,12 +40,12 @@ Requires:	ruby-mysql-library
 %description -n ruby-DBD-Mysql
 MySQL Database Driver for Ruby.
 
-%description -n ruby-DBD-Mysql -l pl
-Sterownik bazy danych MySQL dla jêzyka Ruby.
+%description -n ruby-DBD-Mysql -l pl.UTF-8
+Sterownik bazy danych MySQL dla jÄ™zyka Ruby.
 
 %package -n ruby-DBD-ODBC
 Summary:	ODBC Database Driver for Ruby
-Summary(pl):	Sterownik bazy danych ODBC dla jêzyka Ruby
+Summary(pl.UTF-8):   Sterownik bazy danych ODBC dla jÄ™zyka Ruby
 Group:		Development/Languages
 Requires:	%{name} = %{version}-%{release}
 Requires:	ruby-odbc
@@ -53,12 +53,12 @@ Requires:	ruby-odbc
 %description -n ruby-DBD-ODBC
 ODBC Database Driver for Ruby.
 
-%description -n ruby-DBD-ODBC -l pl
-Sterownik bazy danych ODBC dla jêzyka Ruby.
+%description -n ruby-DBD-ODBC -l pl.UTF-8
+Sterownik bazy danych ODBC dla jÄ™zyka Ruby.
 
 %package -n ruby-DBD-Pg
 Summary:	PostgreSQL Database Driver for Ruby
-Summary(pl):	Sterownik bazy danych PostgreSQL dla jêzyka Ruby
+Summary(pl.UTF-8):   Sterownik bazy danych PostgreSQL dla jÄ™zyka Ruby
 Group:		Development/Languages
 Requires:	%{name} = %{version}-%{release}
 Requires:	ruby-Postgres
@@ -66,20 +66,20 @@ Requires:	ruby-Postgres
 %description -n ruby-DBD-Pg
 PostgreSQL Database Driver for Ruby.
 
-%description -n ruby-DBD-Pg -l pl
-Sterownik bazy danych PostgreSQL dla jêzyka Ruby.
+%description -n ruby-DBD-Pg -l pl.UTF-8
+Sterownik bazy danych PostgreSQL dla jÄ™zyka Ruby.
 
 %package -n ruby-DBD-SQLite
 Summary:	SQLite Database Driver for Ruby
-Summary(pl):	Sterownik bazy danych SQLite dla jêzyka Ruby
+Summary(pl.UTF-8):   Sterownik bazy danych SQLite dla jÄ™zyka Ruby
 Group:		Development/Languages
 Requires:	%{name} = %{version}-%{release}
 
 %description -n ruby-DBD-SQLite
 SQLite Database Driver for Ruby.
 
-%description -n ruby-DBD-SQLite -l pl
-Sterownik bazy danych SQLite dla jêzyka Ruby.
+%description -n ruby-DBD-SQLite -l pl.UTF-8
+Sterownik bazy danych SQLite dla jÄ™zyka Ruby.
 
 %prep
 %setup -q -n ruby-dbi
