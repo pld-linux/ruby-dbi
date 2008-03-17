@@ -7,17 +7,17 @@
 Summary:	Database Interface for Ruby
 Summary(pl.UTF-8):	Interfejs do baz danych dla języka Ruby
 Name:		ruby-DBI
-Version:	0.1.1
+Version:	0.2.0
 Release:	1
 License:	GPL
 Group:		Development/Languages
-Source0:	http://rubyforge.org/frs/download.php/12368/%{tarname}-%{version}.tar.gz
-# Source0-md5:	1077f898080bb0af1098ee4b5b54f8d1
+Source0:	http://rubyforge.org/frs/download.php/33959/dbi-%{version}.tar.gz
+# Source0-md5:	b9836c3853a823432e45bccc4c29d333
 Patch0:		%{name}-prefix.patch
 BuildRequires:	mysql-ruby
 BuildRequires:	rpmbuild(macros) >= 1.277
-BuildRequires:	ruby-devel >= 1:1.8.4-5
 BuildRequires:	ruby-Postgres
+BuildRequires:	ruby-devel >= 1:1.8.4-5
 BuildRequires:	ruby-odbc
 BuildRequires:	sqlite-devel
 Obsoletes:	ruby-dbi
@@ -82,7 +82,7 @@ SQLite Database Driver for Ruby.
 Sterownik bazy danych SQLite dla języka Ruby.
 
 %prep
-%setup -q -n ruby-dbi
+%setup -q -n dbi-%{version}
 %patch0 -p1
 
 #find lib -type d -name 'test*' | xargs rm -r -v
@@ -119,14 +119,13 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%doc README* 
+%doc README*
 %if %{with rdoc}
 %doc rdoc
 %endif
 %attr(755,root,root) %{_bindir}/proxyserver.rb
 %attr(755,root,root) %{_bindir}/sqlsh.rb
 %dir %{ruby_rubylibdir}/DBD
-%dir %{ruby_archdir}/DBD
 %{ruby_rubylibdir}/DBD/Proxy
 %{ruby_rubylibdir}/DBD/SQLRelay
 %{ruby_rubylibdir}/dbi.rb
@@ -152,5 +151,4 @@ rm -rf $RPM_BUILD_ROOT
 
 %files -n ruby-DBD-SQLite
 %defattr(644,root,root,755)
-%dir %{ruby_archdir}/DBD/SQLite
-%attr(755,root,root) %{ruby_archdir}/DBD/SQLite/SQLite.so
+%{ruby_rubylibdir}/DBD/SQLite
