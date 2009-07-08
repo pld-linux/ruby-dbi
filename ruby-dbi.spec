@@ -24,7 +24,7 @@ Suggests: ruby-dbd-mysql
 Suggests: ruby-dbd-pg
 Suggests: ruby-dbd-sqlite
 Suggests: ruby-dbd-sqlite3
-BuildRequires:	setup.rb
+BuildRequires:	setup.rb >= 3.4.1
 Obsoletes:	ruby-dbi
 %{?ruby_mod_ver_requires_eq}
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -95,8 +95,8 @@ Sterownik bazy danych SQLite dla języka Ruby.
 %build
 cp %{_datadir}/setup.rb .
 ruby setup.rb config \
-	--rb-dir=%{ruby_rubylibdir} \
-	--so-dir=%{ruby_archdir}
+	--rbdir=%{ruby_rubylibdir} \
+	--sodir=%{ruby_archdir}
 
 ruby setup.rb setup
 
