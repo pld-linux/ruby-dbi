@@ -25,8 +25,9 @@ Suggests:	ruby-dbd-pg
 Suggests:	ruby-dbd-sqlite
 Suggests:	ruby-dbd-sqlite3
 BuildRequires:	setup.rb >= 3.4.1
-Obsoletes:	ruby-DBI
 %{?ruby_mod_ver_requires_eq}
+Obsoletes:	ruby-DBI
+Provides:	ruby-DBI
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
 %description
