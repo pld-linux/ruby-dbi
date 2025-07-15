@@ -38,7 +38,7 @@ Moduł DBI dla Ruby.
 
 %prep
 %setup -q -n dbi-%{version}
-#%patch0 -p1
+#%%patch0 -p1
 
 #find lib -type d -name 'test*' | xargs rm -r -v
 
